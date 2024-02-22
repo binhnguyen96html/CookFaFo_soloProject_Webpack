@@ -1,0 +1,49 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-2xl text-red-600 my-6 
+  }
+  h5 {
+    @apply text-xl text-gray-400 mt-3 uppercase
+  }
+  h6 {
+    @apply text-base
+  }
+  p {
+    @apply text-xs md:text-sm xl:text-base dark:text-gray-400 text-gray-600 
+  }
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+/* .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}  */
+
+/* For IE, Edge and Firefox  */
+
+/* .scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+} */
+  
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+    h1 {
+      @apply text-2xl text-red-600 my-6 
+    }
+    h5 {
+      @apply text-xl text-red-400 mt-3 uppercase !important
+    }
+    h6 {
+      @apply text-base
+    }
+    p {
+      @apply text-xs md:text-sm xl:text-base dark:text-gray-400 text-gray-600 
+    }
+  } */
+
+  
+
