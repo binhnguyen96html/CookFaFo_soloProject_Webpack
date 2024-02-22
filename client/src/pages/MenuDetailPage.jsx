@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../components/BreadcrumbCom";
 import CarouselCom2 from "../components/CarouselCom2";
 import { useGetMenuByIdQuery } from "../slices/api/menuApiSlice";
-import { useGetProductsBasedMenuKeyQuery } from "../slices/api/productApiSlice";
+// import { useGetProductsBasedMenuKeyQuery } from "../slices/api/productApiSlice";
 import Spinner from "../components/Spinner";
 import AlertCom from "../components/AlertCom";
 import ProductCard from "../components/ProductCard";
 import { FaStore } from "react-icons/fa";
-import { addToCart } from "../slices/reducers/cartSlice";
+import { addToCart, addAllToCart } from "../slices/reducers/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const MenuDetailPage = () => {
-  // const [menuKeyInput, setMenuKeyInput] = useState("");
   const { id: menu_id } = useParams();
 
   const dispatch = useDispatch();
@@ -23,24 +23,16 @@ const MenuDetailPage = () => {
     isLoading: menuIsLoading,
   } = useGetMenuByIdQuery(menu_id);
 
-  // useEffect(() => {
-  //   if (menu) setMenuKeyInput(menu.menuKey);
-  //   console.log(menu)
-  // }, [menu]);
+  const addAllToCartHandler = () => {
+    const productId_arr = [];
+    menu.productsBasedMenuKey.forEach((pro) => {
+      productId_arr.push(pro._id)
+    });
 
-  // const {
-  //   data: products,
-  //   error: productsError,
-  //   isLoading: productsIsLoading,
-  // } = useGetProductsBasedMenuKeyQuery(menuKeyInput);
+    dispatch(addAllToCart(productId_arr))
+    console.log(productId_arr)
 
-  // console.log(products);
-
-  const addToCartHandler = (id) => {
-    dispatch(addToCart(id));
   };
-
-  // const cartData = useSelector((state) => state.cart)
 
   return (
     <>
@@ -58,7 +50,9 @@ const MenuDetailPage = () => {
 
               {menu.menu.recipes.map((step, i) => (
                 <div className="text-justify" key={i}>
-                  <h5 className="text-xl text-gray-400 mt-4 uppercase">Step: {i + 1}</h5>
+                  <h5 className="text-xl text-gray-400 mt-4 uppercase">
+                    Step: {i + 1}
+                  </h5>
                   <p className="text-base text-gray-600 mt-2">{step}</p>
                 </div>
               ))}
@@ -79,12 +73,17 @@ const MenuDetailPage = () => {
                    py-3 px-5 my-6 rounded-3xl"
               >
                 <FaStore className="text-2xl" />
-                <h6 className="">You can find all ingredients here</h6>
+                <button onClick={addAllToCartHandler}>
+                  You can find all ingredients here
+                </button>
               </div>
 
               {menu.productsBasedMenuKey.map((pro) => (
                 <div key={pro._id}>
-                  <ProductCard product={pro} clickHandler={addToCartHandler} />
+                  <ProductCard
+                    product={pro}
+                    clickHandler={(id) => dispatch(addToCart(id))}
+                  />
                 </div>
               ))}
             </div>

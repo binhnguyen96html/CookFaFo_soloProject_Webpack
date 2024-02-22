@@ -7,13 +7,6 @@ import { useFetchMenuQuery } from "../slices/api/menuApiSlice";
 const HomePage = () => {
   const { data, error, isLoading } = useFetchMenuQuery();
 
-
-
-  // useEffect(() => {
-  //   console.log(isLoading)
-  // console.log(data)
-  // },[isLoading, data])
-
   return (
     <>
       <CarouselCom
@@ -24,7 +17,7 @@ const HomePage = () => {
       />
       <div className="mt-4 ">
      
-          <h1 className="text-2xl text-yellow-700 py-8 ">Popular Cuisine</h1>
+          <h1 className="text-2xl py-8 ">Popular Cuisine</h1>
 
           {isLoading ? (
             <p>Loading...</p>

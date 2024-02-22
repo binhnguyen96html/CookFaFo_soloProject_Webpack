@@ -13,10 +13,14 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       state.cartData.cartNum++;
 
-      for (let id of action.payload) {
-        // console.log(id);
-        state.cartData.carts[id] ? state.cartData.carts[id]++ : (state.cartData.carts[id] = 1);
-      }
+      // for (let id of action.payload) {
+      //   // console.log(id);
+      //   state.cartData.carts[id] ? state.cartData.carts[id]++ : (state.cartData.carts[id] = 1);
+      // }
+
+      state.cartData.carts[action.payload]
+        ? state.cartData.carts[action.payload]++
+        : (state.cartData.carts[action.payload] = 1);
 
       localStorage.setItem(
         "cartData",
@@ -28,6 +32,16 @@ const cartSlice = createSlice({
         })
       );
     },
+    addAllToCart: (state, action) => {
+      state.cartData.cartNum += action.payload.length;
+
+      for (let id of action.payload) {
+        state.cartData.carts[id]
+          ? state.cartData.carts[id]++
+          : (state.cartData.carts[id] = 1);
+      }
+    },
+
     clearCart: (state, action) => {
       state.cartData = { cartNum: 0, carts: {} };
     },
@@ -36,4 +50,4 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer;
 
-export const { addToCart, clearCart } = cartSlice.actions;
+export const { addToCart, addAllToCart,clearCart } = cartSlice.actions;
