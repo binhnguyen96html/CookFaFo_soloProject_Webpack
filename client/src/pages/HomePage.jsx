@@ -17,16 +17,16 @@ const HomePage = () => {
       />
       <div className="mt-4 ">
      
-          <h1 className="text-2xl py-8 ">Popular Cuisine</h1>
+          <h1>Popular Cuisine</h1>
 
           {isLoading ? (
             <p>Loading...</p>
           ) : error ? (
             <p>Error</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {data.map((cookList) => (
-                <Menu key={cookList._id} menu={cookList} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+              {data.map((menu) => (
+                <Menu key={menu._id} menu={menu} />
               ))}
             </div>
           )}

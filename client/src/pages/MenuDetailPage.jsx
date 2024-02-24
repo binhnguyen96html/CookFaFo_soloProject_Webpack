@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Breadcrumb from "../components/BreadcrumbCom";
+import BreadcrumbCom from "../components/BreadcrumbCom";
 import CarouselCom2 from "../components/CarouselCom2";
 import { useGetMenuByIdQuery } from "../slices/api/menuApiSlice";
 // import { useGetProductsBasedMenuKeyQuery } from "../slices/api/productApiSlice";
@@ -30,7 +30,7 @@ const MenuDetailPage = () => {
     });
 
     dispatch(addAllToCart(productId_arr))
-    console.log(productId_arr)
+    // console.log(productId_arr)
 
   };
 
@@ -42,7 +42,7 @@ const MenuDetailPage = () => {
         <AlertCom err={menuError} />
       ) : (
         <div>
-          <Breadcrumb category={menu.category} />
+          <BreadcrumbCom category={menu.menu.category} />
 
           <div className="grid grid-cols-3 gap-8 mt-4">
             <div className="col-span-2">
@@ -67,14 +67,15 @@ const MenuDetailPage = () => {
               rounded-xl bg-slate-100"
             >
               <div
-                className="bg-gradient-to-r from-red-500 to-yellow-400 
+                className="bg-gradient-to-r from-red-600 to-yellow-500 
+                hover:bg-gradient-to-r hover:from-red-500 hover:to-yellow-400 
                   text-white
                    flex items-center gap-2
                    py-3 px-5 my-6 rounded-3xl"
               >
                 <FaStore className="text-2xl" />
-                <button onClick={addAllToCartHandler}>
-                  You can find all ingredients here
+                <button className="font-bold" onClick={addAllToCartHandler}>
+                  Buy all with One Click!
                 </button>
               </div>
 

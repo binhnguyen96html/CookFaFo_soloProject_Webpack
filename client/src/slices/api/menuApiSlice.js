@@ -1,4 +1,5 @@
 import { apiSlice } from "./apiSlice";
+import { MENU_URL } from "../constants";
 
 /*
 Accepts an options object containing the same endpoints builder callback 
@@ -11,14 +12,14 @@ const menuApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         fetchMenu: builder.query({
             query:() => ({
-                url: `/api/menu`,
+                url: MENU_URL,
             }),
             //This is how long RTK Query will keep your data cached for after the last component unsubscribes
             keepUnusedDataFor: 5,
         }),
         getMenuById: builder.query({
             query:(id) => ({
-                url:`api/menu/${id}`
+                url:`${MENU_URL}/${id}`
             }),
             keepUnusedDataFor: 5,
         })

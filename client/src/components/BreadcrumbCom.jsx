@@ -12,7 +12,7 @@ const BreadcrumbCom = ({ category }) => {
         </Link>
 
         <BreadcrumbItem>
-          <Link to="cook-list">{category}</Link>
+          <Link to="#">{category}</Link>
         </BreadcrumbItem>
       </Breadcrumb>
     </>

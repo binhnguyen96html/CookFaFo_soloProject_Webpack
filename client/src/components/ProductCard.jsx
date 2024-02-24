@@ -3,7 +3,7 @@ import React from "react";
 
 const ProductCard = ({ product, clickHandler }) => {
   return (
-    <div className="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
+    <div className=" w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
       
       <Link to="#">
         <img

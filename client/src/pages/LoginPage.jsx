@@ -30,12 +30,12 @@ const LoginPage = () => {
     try {
       // The promise returned by the dispatched thunk has an unwrap property which can be called to extract the payload of a fulfilled action or to throw either the error or, if available, payload created by rejectWithValue from a rejected action:
       const res = await login({ email, password }).unwrap();
-      // toast.success("Login successfully!");
+      toast.success("Login successfully!");
       dispatch(setCredentials(res))
     } catch (error) {
       //error?.data?.error: from server
       //error.data: from client
-      // toast.error(error.data.error || error.data)
+      toast.error(error.data.error || error.data)
       console.log(error.data.error || error.data)
     }
   };

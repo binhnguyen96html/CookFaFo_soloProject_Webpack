@@ -11,6 +11,7 @@ module.exports = {
     // "./**/*.{html}"
     "./index.html",   
     "./client/**/*.{html,js,jsx,ts,tsx}",
+    "./client/src/**/*.{html,js,jsx,ts,tsx}",
     "./node_modules/flowbite/**/*.js",
     "./client/node_modules/flowbite-react/lib/esm/**/*.js",
   ],

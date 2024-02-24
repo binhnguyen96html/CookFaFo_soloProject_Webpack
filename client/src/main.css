@@ -1,11 +1,11 @@
-/* @tailwind base;
+@tailwind base;
   
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   h1 {
-    @apply text-2xl text-red-600 my-6 
+    @apply text-2xl text-gray-600 my-6 
   }
   h5 {
     @apply text-xl text-gray-400 mt-3 uppercase
@@ -19,5 +19,7 @@
 }
 
 
-  
- */
+/* webpack --config webpack.config.js */
+
+/* "start": "webpack-dev-server --mode development", */
+

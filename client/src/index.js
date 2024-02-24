@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.js";
-import "./index.css";
+import "./main.css";
 import HomePage from "./pages/HomePage";
 
 import {
@@ -26,7 +26,7 @@ const router = createBrowserRouter(
         <Route path='/signup' element={<SignupPage />} />
         <Route index={true} path='/' element={<HomePage />} />
         {/* <Route path='/products' element={<ProductsPage />} /> */}
-        <Route path='/menu-detail/:id' element={<MenuDetailPage/>} />
+        <Route path='/menu/:id' element={<MenuDetailPage/>} />
       </Route>
     )
   );
@@ -38,3 +38,4 @@ root.render(
     <RouterProvider router={router} />
 </Provider>
 );
+ 
